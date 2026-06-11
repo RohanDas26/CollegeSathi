@@ -10,12 +10,9 @@ export default function AuthPage() {
     toast.success('Signed in successfully!');
   };
 
-  const handleOAuth = async (provider: string) => {
-    try {
-      await signIn(provider.toLowerCase(), { callbackUrl: '/' });
-    } catch (error) {
-      toast.error(`Failed to connect to ${provider}. Please try again.`);
-    }
+  const handleOAuth = (provider: string) => {
+    // Direct redirect to NextAuth provider endpoint
+    window.location.href = `/api/auth/signin/${provider.toLowerCase()}?callbackUrl=${encodeURIComponent('/')}`;
   };
 
   const handleAction = (action: string) => {
