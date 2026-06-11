@@ -10,9 +10,12 @@ export default function AuthPage() {
     toast.success('Signed in successfully!');
   };
 
-  const handleOAuth = (provider: string) => {
-    toast.loading(`Redirecting to ${provider} login...`);
-    signIn(provider.toLowerCase(), { callbackUrl: '/' });
+  const handleOAuth = async (provider: string) => {
+    try {
+      await signIn(provider.toLowerCase(), { callbackUrl: '/' });
+    } catch (error) {
+      toast.error(`Failed to connect to ${provider}. Please try again.`);
+    }
   };
 
   const handleAction = (action: string) => {
