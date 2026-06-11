@@ -4,12 +4,17 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Search, Heart, Bell, ChevronDown, ChevronRight, Star, GraduationCap, Building2, BookOpen, Scale, Stethoscope } from 'lucide-react';
 import { useApp } from '../AppContext';
+import toast from 'react-hot-toast';
 
 export function Navbar() {
   const pathname = usePathname();
   const { compareList } = useApp();
   const [discoverOpen, setDiscoverOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState('Engineering');
+
+  const handleAction = (action: string) => {
+    toast.success(`${action} feature coming soon!`);
+  };
 
   const categories = [
     { id: 'Engineering', icon: <Building2 className="w-4 h-4" /> },
