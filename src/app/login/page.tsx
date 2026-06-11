@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { EyeOff } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { signIn } from 'next-auth/react';
 
 export default function AuthPage() {
   const handleSignIn = (e: React.FormEvent) => {
@@ -10,9 +11,8 @@ export default function AuthPage() {
   };
 
   const handleOAuth = (provider: string) => {
-    // Assuming standard NextAuth.js or custom OAuth routes
     toast.loading(`Redirecting to ${provider} login...`);
-    window.location.href = `/api/auth/signin/${provider.toLowerCase()}`;
+    signIn(provider.toLowerCase(), { callbackUrl: '/' });
   };
 
   const handleAction = (action: string) => {

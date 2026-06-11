@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { AppProvider } from "./AppContext";
-import { Navbar } from "./components/Navbar";
+import Providers from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
-
-import { Toaster } from 'react-hot-toast';
 
 export const metadata: Metadata = {
   title: "College Sathi",
@@ -21,11 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-slate-50 text-slate-900`}>
-        <AppProvider>
-          <Navbar />
+        <Providers>
           {children}
-          <Toaster position="top-right" />
-        </AppProvider>
+        </Providers>
       </body>
     </html>
   );
