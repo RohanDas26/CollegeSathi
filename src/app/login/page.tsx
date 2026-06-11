@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import { EyeOff } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { signIn } from 'next-auth/react';
 
 export default function AuthPage() {
   const handleSignIn = (e: React.FormEvent) => {
